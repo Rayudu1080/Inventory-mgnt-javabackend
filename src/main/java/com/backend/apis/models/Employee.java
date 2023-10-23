@@ -24,16 +24,34 @@ public class Employee {
 	@Column(name="email")
 	private String email;
 	
+	@Column(name="phone")
+	private String phone;
+	
+	@Column(name="address")
+	private String address;
+	
 	/**
 	 * @param firstname
 	 * @param lastname
 	 * @param email
 	 */
-	public Employee(String firstname, String lastname, String email) {
+	public Employee(String firstname, String lastname, String email, String phone, String address) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
+		this.phone = phone;
+		this.address = address;
+	}
+	
+	public Employee(long id, String firstname, String lastname, String email, String phone, String address) {
+//		super();
+		this.id = id;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.phone = phone;
+		this.address = address;
 	}
 	
 	public Employee() {
@@ -73,6 +91,21 @@ public class Employee {
 		this.email = email;
 	}
 
-	
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
 	
 }
