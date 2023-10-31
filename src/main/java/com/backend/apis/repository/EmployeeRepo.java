@@ -8,5 +8,4 @@ import com.backend.apis.models.Employee;
 @Repository
 public interface EmployeeRepo extends JpaRepository<Employee, Long>{
 	
-	public Employee getEmployeeById(long id);
 }

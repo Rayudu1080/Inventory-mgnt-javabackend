@@ -72,8 +72,9 @@ public class EmpControllerTest {
         Employee updatedEmployee = new Employee(employeeId, "Updated", "Employee", "updated@example.com","6924799923", "1233 Uptown Ln, Tx 45677");
 
         // Mock the void method updateEmployee to do nothing
-        doNothing().when(employeeService).updateEmployee(eq(employeeId), any(Employee.class));
-
+//        doReturn(updatedEmployee).when(employeeService).updateEmployee(eq(employeeId), any(Employee.class));
+        
+        when(employeeService.updateEmployee(employeeId, updatedEmployee)).thenReturn(updatedEmployee);
         ResponseEntity<Employee> responseEntity = empController.updateEmployee(employeeId, updatedEmployee);
         assertEquals(200, responseEntity.getStatusCodeValue());
         assertEquals("Updated", responseEntity.getBody().getFirstname());
@@ -87,7 +88,7 @@ public class EmpControllerTest {
         doNothing().when(employeeService).deleteEmployee(employeeId);
 
         Map<String, String> result = empController.deleteEmployee(employeeId);
-        assertEquals(1, result.size());
+        assertEquals(2, result.size());
         assertEquals("1", result.get("id"));
         assertEquals("employee deleted successfully", result.get("message"));
     }
